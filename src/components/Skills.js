@@ -25,7 +25,7 @@ const Skills = () => {
     },
     {
       "name" : "Docker",
-      "icon" : "FaDocker"
+      "icon" : FaDocker
     }
   ];
   return (

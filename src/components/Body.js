@@ -11,7 +11,7 @@ const Body = () => {
 
           <div className="body-content">
             <div className="body-headline">Joshua Muriithi</div>
-            <div className="body-text">CyberSecurity Architect</div>
+            <div className="body-text">CyberSecurity Engineer</div>
           </div>
 
           <div className="body-icons">
