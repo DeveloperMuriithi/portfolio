@@ -37,7 +37,7 @@ export const Contact = () => {
           <h2
               className="text-3xl font-bold mb-8 bg-gradient-to-r from-green-500 to-teal-700 bg-clip-text text-transparent text-center"
           > 
-          Let's Connect! 
+          Initiate Handshake 
           </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="relative">

@@ -1,5 +1,6 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa";
+import { LuGithub } from "react-icons/lu";
+import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 
 export const Footer = () => {
@@ -41,12 +42,12 @@ export const Footer = () => {
                 label: "Email",
               },
               {
-                Icon: FaGithub,
+                Icon: LuGithub,
                 href: "https://github.com/DeveloperMuriithi",
                 label: "GitHub",
               },
               {
-                Icon: FaLinkedin,
+                Icon: FaLinkedinIn,
                 href: "https://www.linkedin.com/in/joshua-muriithi",
                 label: "LinkedIn",
               },
