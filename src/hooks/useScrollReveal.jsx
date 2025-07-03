@@ -5,19 +5,16 @@ export const useScrollReveal = (ref) => {
     const node = ref.current;
     if (!node) return;
 
-    let hasRevealed = false;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasRevealed) {
+        if (entry.isIntersecting) {
           node.classList.add("visible");
-          hasRevealed = true;
-          observer.unobserve(node); // stop watching to save resources
+          observer.unobserve(node); // reveal once, then stop observing
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 

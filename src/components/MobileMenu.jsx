@@ -1,52 +1,63 @@
 import { useEffect } from "react";
 
-export const MobileMenu = ({menuOpen, setMenuOpen}) => {
+export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const links = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Ping Me", href: "#contact", highlight: true },
+  ];
 
   return (
-    <div className={`fixed top-0 left-0 w-full bg-[rgba(10, 10, 10, 0.8)] z-40 flex flex-col items-center justify-center
-      transition-all duration-300 ease-in-out
-
-      ${menuOpen 
-        ? "h-screen bg-black opacity-100 pointer-events-auto"
-        : "h-0 opacity-0 pointer-events-none"
-      }
+    <div
+      className={`
+        fixed inset-0 z-50 flex flex-col items-center justify-center
+        bg-black/90 text-white transition-opacity duration-300 ease-in-out
+        ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
       `}
-      >
-        <button 
-        onClick={() => setMenuOpen(false)} 
-        className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!menuOpen}
+    >
+      {/* Close Button */}
+      <button
+        onClick={() => setMenuOpen(false)}
+        className="absolute top-6 right-6 text-white text-4xl focus:outline-none"
         aria-label="Close Menu"
-        >
-            &times;
-        </button>
-          <a href="#home" 
-              onClick={() => setMenuOpen(false)}
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                          ${menuOpen ? "opacity-100 translate-y-0": "opacity-100 translate-y-5"}
-                      `}> 
-              Home 
-            </a>
-          <a href="#about" 
-            onClick={() => setMenuOpen(false)}
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                          ${menuOpen ? "opacity-100 translate-y-0": "opacity-100 translate-y-5"}
-                      `}> About 
-                      </a>
-          <a href="#projects" 
-            onClick={() => setMenuOpen(false)}
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                          ${menuOpen ? "opacity-100 translate-y-0": "opacity-100 translate-y-5"}
-                      `}> 
-                      Projects 
-                      </a>
-          <a href="#contact" 
-            onClick={() => setMenuOpen(false)}
-            className={`text-2xl font-semibold text-green-400 my-4 transform transition-transform duration-300
-                          ${menuOpen ? "opacity-100 translate-y-0": "opacity-100 translate-y-5"}
-                      `}> 
-                      Ping Me 
-                      </a>
-      </div>
+      >
+        &times;
+      </button>
 
+      {/* Nav Links */}
+      <nav className="flex flex-col space-y-6 text-2xl font-semibold">
+        {links.map(({ label, href, highlight }, idx) => (
+          <a
+            key={label}
+            href={href}
+            onClick={() => setMenuOpen(false)}
+            className={`
+              transform transition duration-300 ease-in-out
+              ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+              ${highlight ? "text-green-400" : "text-white"}
+            `}
+            style={{ transitionDelay: `${idx * 75}ms` }} // staggered animation
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    </div>
   );
-}
+};

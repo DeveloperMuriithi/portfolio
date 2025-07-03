@@ -60,3 +60,11 @@ html, body {
   transform: translateY(0);
 }
 
+@media (max-width: 640px) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+

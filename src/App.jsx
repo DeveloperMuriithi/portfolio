@@ -3,6 +3,7 @@ import "./index.css"
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { LoadingScreen } from "./components/LoadingScreen";
 import { Navbar } from "./components/Navbar";
+import { Footer  } from "./components/Footer";
 import { MobileMenu } from "./components/MobileMenu";
 import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
@@ -27,6 +28,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <Footer />
       </div>
   </>
   );
